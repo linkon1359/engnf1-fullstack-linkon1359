@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriageSync - Resources</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <strong>TriageSync</strong>
+    <div>
+      <a href="dashboard.html">Triage</a>
+      <a href="resources.html">Resources</a>
+      <a href="bookings.html">Bookings</a>
+      <button id="logoutBtn" type="button">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="statusBox" class="status-msg"></div>
+
+    <section class="card">
+      <h2>Resources</h2>
+      <div class="filters">
+        <input type="text" id="resSearch" placeholder="Search name..." />
+        <select id="resType">
+          <option value="">All Types</option>
+          <option value="ROOM">ROOM</option>
+          <option value="LAB">LAB</option>
+          <option value="EQUIPMENT">EQUIPMENT</option>
+        </select>
+        <input type="number" id="resCapacity" placeholder="Min capacity" min="1" />
+        <button id="loadResBtn" class="primary" type="button">Load</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody id="resourcesBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3>Book Slot</h3>
+      <form id="bookingForm" class="filters">
+        <input type="number" id="bookResourceId" placeholder="Resource ID" required />
+        <input type="datetime-local" id="bookStart" required />
+        <input type="datetime-local" id="bookEnd" required />
+        <input type="text" id="bookPurpose" placeholder="Purpose (5-200 chars)" required />
+        <button type="submit" class="primary">Book</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/resources.js"></script>
+</body>
+</html>

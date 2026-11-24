@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriageSync - Triage Queue</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <strong>TriageSync</strong>
+    <div>
+      <a href="dashboard.html">Triage</a>
+      <a href="resources.html">Resources</a>
+      <a href="bookings.html">Bookings</a>
+      <button id="logoutBtn" type="button">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="statusBox" class="status-msg"></div>
+
+    <section class="grid-stats" id="statsStrip">
+      <div class="stat-box">Reviewed: <strong id="statReviewed">-</strong></div>
+      <div class="stat-box">Model Agreement: <strong id="statAgreement">-</strong></div>
+    </section>
+
+    <section class="card">
+      <div class="filters">
+        <input type="text" id="searchQ" placeholder="Search subject/body..." />
+        <select id="filterStatus">
+          <option value="">All Status</option>
+          <option value="OPEN">OPEN</option>
+          <option value="IN_PROGRESS">IN_PROGRESS</option>
+          <option value="RESOLVED">RESOLVED</option>
+          <option value="CLOSED">CLOSED</option>
+        </select>
+        <select id="filterCategory">
+          <option value="">All Category</option>
+          <option value="BILLING">BILLING</option>
+          <option value="BUG">BUG</option>
+          <option value="FEATURE_REQUEST">FEATURE_REQUEST</option>
+          <option value="LOGIN">LOGIN</option>
+          <option value="DELIVERY">DELIVERY</option>
+        </select>
+        <select id="filterPriority">
+          <option value="">All Priority</option>
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+          <option value="URGENT">URGENT</option>
+        </select>
+        <button id="applyFiltersBtn" class="primary" type="button">Filter</button>
+        <button id="reimportBtn" type="button">Re-Import Feed</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="ticketsBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="detailPanel" style="display:none;">
+      <h3>Ticket Detail & Audit</h3>
+      <p id="detailSubject"></p>
+      <p id="detailBody"></p>
+      <div class="filters" style="margin-top:10px;">
+        <select id="editStatus">
+          <option value="OPEN">OPEN</option>
+          <option value="IN_PROGRESS">IN_PROGRESS</option>
+          <option value="RESOLVED">RESOLVED</option>
+          <option value="CLOSED">CLOSED</option>
+        </select>
+        <select id="editPriority">
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+          <option value="URGENT">URGENT</option>
+        </select>
+        <button id="saveTicketBtn" class="primary" type="button">Save (Optimistic)</button>
+      </div>
+      <h4>Events / Audit Trail</h4>
+      <ul id="eventsList"></ul>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/tickets.js"></script>
+</body>
+</html>

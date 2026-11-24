@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriageSync - Bookings</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <strong>TriageSync</strong>
+    <div>
+      <a href="dashboard.html">Triage</a>
+      <a href="resources.html">Resources</a>
+      <a href="bookings.html">Bookings</a>
+      <button id="logoutBtn" type="button">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="statusBox" class="status-msg"></div>
+
+    <section class="card">
+      <h2>My Bookings</h2>
+      <div class="filters">
+        <select id="bookingStatusFilter">
+          <option value="">All Status</option>
+          <option value="PENDING">PENDING</option>
+          <option value="APPROVED">APPROVED</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+        <button id="refreshBookingsBtn" class="primary" type="button">Refresh</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Resource</th>
+            <th>Status</th>
+            <th>Purpose</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="bookingsBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/bookings.js"></script>
+</body>
+</html>
